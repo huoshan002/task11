@@ -1,0 +1,28 @@
+
+
+/***********color****************/
+$color-primary: #35b558;
+$color-secondary: #FB5D20;
+
+$text-primary: #333333;
+$text-primary-light: lighten($text-primary, 30%);
+
+$color-link: #35b558;
+
+$color-border: #E4E4E4;
+
+
+@mixin clearfix {
+    &::before {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+}
