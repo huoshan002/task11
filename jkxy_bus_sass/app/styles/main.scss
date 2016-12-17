@@ -1,0 +1,189 @@
+@import "neat";
+@import "variable";
+
+@mixin pull-left {
+    float: left;
+}
+
+@mixin pull-right {
+    float: right;
+}
+
+@mixin clearfix {
+    &::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    &::before {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+/*************main***************/
+.wrap {
+    width: 80%;
+    margin: 20px auto;
+    border: 6px #dfdfdf solid;
+    min-width: 820px;
+
+    @include clearfix;
+}
+
+/*头部*/
+.header {
+
+    @include clearfix;
+
+    .left {
+        @include pull-left;
+
+        h1 {
+            font-size: $font-title;
+            letter-spacing: 20px;
+        }
+    }
+
+    .right {
+        color: $color-primary;
+        margin-top: 20px;
+        margin-right: 10px;
+        @include pull-right;
+        .current {
+            display: block;
+            width: 36px;
+            font-size: 32px;
+            line-height: 56px;
+            margin-right: 20px;
+            font-weight: 600;
+            @include pull-left;
+        }
+
+        .time {
+            @include pull-left;
+            p {
+                font-size: 20px;
+
+                &:first-child {
+                    margin-top: 5px;
+                }
+
+                &:last-child {
+                    margin-top: 30px;
+                }
+            }
+        }
+
+    }
+}
+
+/*公交公司*/
+.company {
+    background-color: $color-primary;
+    font-size: 22px;
+    text-align: center;
+    letter-spacing: 16px;
+    color: #fff;
+    font-weight: bold;
+}
+
+/*站名*/
+.stand-wrap {
+
+    margin: 10px 0 20px 0;
+    @include clearfix;
+
+    ul {
+
+        li {
+            position: relative;
+            display: block;
+            width: $list-width;
+            text-align: center;
+            @include pull-left;
+
+            span {
+                display: inline-block;
+                width: 16px;
+                margin: 0 auto;
+            }
+
+            &::before {
+                position: absolute;
+                top: -10px;
+                left: 50%;
+                margin-left: -3px;
+                content: '';
+                display: block;
+                width: 0;
+                height: 0;
+                border: 6px #fff solid;
+                border-bottom: 6px transparent solid;
+                border-left: 6px transparent solid;
+                border-right: 6px transparent solid;
+                z-index: 99;
+            }
+
+            &:hover {
+                &::before {
+                    border-color: #e91409;
+                    border-bottom: 6px transparent solid;
+                    border-left: 6px transparent solid;
+                    border-right: 6px transparent solid;
+                }
+            }
+
+            &.current {
+                &::before {
+                    border-color: #e91409;
+                    border-bottom: 6px transparent solid;
+                    border-left: 6px transparent solid;
+                    border-right: 6px transparent solid;
+                }
+            }
+        }
+    }
+}
+
+/*底部*/
+.footer {
+    position: relative;
+    padding-top: 20px;
+
+    .price {
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        display: block;
+        background-color: #fff;
+        padding: 5px 10px;
+        z-index: 66;
+        color: $color-primary;
+    }
+
+    .line {
+        position: relative;
+        width: 96%;
+        height: 6px;
+        margin-bottom: 20px;
+        background-color: #e91409;
+
+        &::after {
+            position: absolute;
+            right: 8px;
+            top: -26px;
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border: 16px #e91409 solid;
+            border-top: 16px transparent solid;
+            border-left: 16px transparent solid;
+            border-right: 16px transparent solid;
+            transform: skew(60deg);
+        }
+    }
+}
